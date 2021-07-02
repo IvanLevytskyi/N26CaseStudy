@@ -1,4 +1,15 @@
+/**
+ * Controller class for LWC component called relatedContactInfo
+ */
 public with sharing class RelatedContactInfoController {
+    /**
+     * @description get initial data for LWC component
+     * @param caseId - Id of case record
+     *
+     * @return map of initial data: id of related contact,
+     * list of product descriptors, related contact information,
+     * product information and all related Product Options
+     */
     @AuraEnabled(Cacheable=true)
     public static Map<String, Object> getInitialData(Id caseId) {
         Map<String, Object> result = new Map<String, Object>();
