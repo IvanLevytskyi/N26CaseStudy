@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-theme_default">
+
+        <span class="slds-text-heading_medium slds-align_absolute-center slds-p-around_large slds-theme_shade">
+            <!-- TODO use custom label -->
+            New Product Creation Page
+        </span>
+
+        <lightning-card title="New Product" icon-name="standard:products">
+            <!-- TODO use custom label -->
+
+            <div if:true={showSpinner}>
+                <lightning-spinner alternative-text="Processing..."></lightning-spinner>
+            </div>
+
+            <div class="slds-m-around_large">
+                <lightning-input label="Product Name" type="text" required onchange={onProductNameChange}></lightning-input>
+            </div>
+
+            <div if:true={isInitFinished} class="slds-m-around_large">
+                <div class="slds-theme_alert-texture slds-theme_shade slds-p-around_medium">
+                    <!-- TODO use custom label -->
+                    Below you can choose which products you are going to create (select checkboxes)
+                </div>
+
+                <div class="slds-p-vertical_large">
+                    <lightning-datatable
+                            key-field="country"
+                            data={products}
+                            columns={columns}
+                            oncellchange={onCellChange}
+                            suppress-bottom-bar
+                    ></lightning-datatable>
+                </div>
+
+                <div class="slds-align_absolute-center">
+                    <lightning-button-group>
+                        <lightning-button label="Save" onclick={onSaveClick} variant="brand"></lightning-button>
+                        <lightning-button label="Reset" onclick={onResetClick}></lightning-button>
+                    </lightning-button-group>
+                </div>
+            </div>
+
+        </lightning-card>
+    </div>
+</template>

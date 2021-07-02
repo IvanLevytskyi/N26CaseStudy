@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-theme_default">
+        <lightning-card icon-name="standard:case" title="Related Open Cases">
+            <div if:false={relatedCases}>
+                <div class="slds-align_absolute-center">
+                    There's not any open related cases!
+                </div>
+            </div>
+            <div if:true={relatedCases}>
+                <lightning-datatable
+                        key-field="Id"
+                        columns={columns}
+                        data={relatedCases}
+                        hide-checkbox-column
+                ></lightning-datatable>
+            </div>
+            <lightning-formatted-url
+                    label="View All Cases (Open & Closed)"
+                    target="_blank"
+                    value={reportLink}
+                    class="slds-m-around_small slds-align_absolute-center"
+            ></lightning-formatted-url>
+        </lightning-card>
+    </div>
+</template>

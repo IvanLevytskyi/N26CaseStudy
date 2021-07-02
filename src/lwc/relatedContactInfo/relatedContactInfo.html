@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-theme_default">
+        <lightning-card icon-name="standard:product" title="Related Product Info">
+            <div if:false={product}>
+                <div class="slds-align_absolute-center">
+                    There is not any related product!
+                </div>
+            </div>
+            <div if:true={product}>
+                <template for:each={productInfoFields} for:item="productInfo">
+                    <p key={productInfo.Index}>{productInfo.label} = {productInfo.formattedValue}</p>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>
